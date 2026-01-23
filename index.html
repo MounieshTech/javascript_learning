@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>
+        Hello World
+    </h1>
+
+    <p class="purpose-1">
+        This is to learn javascript 
+    </p>
+
+    <p id="purpose-2">
+        This is to learn typescript
+    </p>
+
+    <p class="purpose-3">
+        This is to do projects
+    </p>
+
+
+
+    <div id="box">
+  Hello
+  <span style="display:none;">secret</span>
+  <b>world</b>!
+  <i>   extra   spaces   </i>
+</div>
+
+
+<button id="btn">
+    Click Here
+</button>
+
+    <h2>My List</h2>
+    <div id="list"></div>
+    
+    <br>
+    <button id="addBtn">Add Bread + Eggs</button>
+    
+</body>
+
+<script>
+    const heading = document.createElement("h1")
+    const headingText = document.createTextNode("Hello there this is Doc 1")
+
+    heading.appendChild(headingText)
+    document.body.appendChild(heading)
+
+
+    const pur2 = document.getElementById('purpose-2');
+    pur2.textContent = 'purpose-2 changed!';
+
+
+    console.log(pur2);
+
+    const purpose1 = document.querySelector('.purpose-1');
+    purpose1.textContent = 'Now I am learning JavaScript seriously!';
+
+    const purpose3 = document.getElementsByClassName('purpose-3')
+
+    console.log(purpose3);
+    
+    purpose3[0].textContent = 'Now i changed the content in the purpose 3'
+
+    const purpose2 = document.querySelector('#purpose-2')
+    purpose2.innerHTML = `<em>Hi</em> there`
+
+
+    const box = document.querySelector('#box')
+
+    console.log(box.textContent);
+    console.log(box.innerHTML);
+    console.log();
+    
+
+    const btn = document.getElementById('btn')
+    btn.addEventListener("click" , () => {
+        alert("Button was clicked");
+    })
+
+    function addNewItem(text) {
+            const newPara = document.createElement("p");
+            newPara.textContent = text;
+            newPara.classList.add("list-1", "list-2");
+            document.getElementById("list").append(newPara);
+        }
+
+        document.getElementById("addBtn").addEventListener("click", () => {
+            addNewItem("Bread");
+            addNewItem("Eggs");
+        });
+
+
+        box.style.backgroundColor = 'tomato';
+
+        
+    
+
+
+
+</script>
+</html>

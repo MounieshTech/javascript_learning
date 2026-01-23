@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test document</title>
+</head>
+<body>
+    
+    <h1 id="head">
+        Hello This is a Test 
+    </h1>
+
+    <h2 id="head2">
+        Hello this is Test 2
+    </h2>
+
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis libero pariatur, voluptas tenetur unde corrupti repellendus, nulla vero fuga, similique accusamus? Vel architecto omnis cumque porro libero temporibus voluptate qui!
+    </p>
+
+    <button id="btn">
+        Click here
+    </button>
+
+    <button onclick="changeColor()">Change Color</button>
+
+    <button id="randColor">
+        Random Color Generate
+    </button>
+
+
+    <div class="gparent">
+        
+        <h2 class="parent">
+            Event Bubbling
+            <div class="child">
+                <button id="btn2">
+                    Click Bubble
+                </button>
+            </div>
+        </h2>
+    </div>
+    
+
+</body>
+
+<script>
+    const btn = document.getElementById("btn")
+    const head = document.getElementById("head")
+
+    const header = document.querySelector("#head2")
+
+    const randButton = document.querySelector("#randColor")
+
+    console.log(header);
+    console.log(head);
+    
+
+    function changeColor(){
+        const colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightsalmon', 'white']
+
+        const currentColor = document.body.style.backgroundColor
+        const currentIndex = colors.indexOf(currentColor)
+
+        const nextIndex = (currentIndex + 1) % colors.length
+        document.body.style.backgroundColor = colors[nextIndex]
+    }
+    
+
+    btn.addEventListener("click" , () => {
+        head.textContent = "Header is Changed"
+        head.style.backgroundColor = "grey"
+    })
+
+    console.log("#" + Math.floor(Math.random() * (256 * 256 * 256)).toString(16).padStart(6, '0'));
+
+    
+    randButton.addEventListener("click" , () => {
+        const newColor = "#" + Math.floor(Math.random() * (256 * 256 * 256)).toString(16).padStart(6, '0')
+        header.style.color = newColor
+    })
+
+    document.getElementById("btn2").addEventListener("click" , () => {
+        console.log("gparent");
+    }, {capture : true})
+    document.getElementById("btn2").addEventListener("click" , () => {
+        console.log("parent");
+    }, {capture : true})
+    document.getElementById("btn2").addEventListener("click" , () => {
+        console.log("child");
+    }, {capture : true})
+
+
+    console.log(null ?? "child");
+    console.log(undefined ?? "child");
+    console.log("Guru" ?? "child");
+
+
+    let user = {
+        profile: {
+            address: {
+                city: "Chennai"
+            }
+        }
+    };
+
+    // Old way → many checks
+    let city = user && user.profile && user.profile.address && user.profile.address.city;
+
+    // Modern way
+    let city2 = user?.profile?.address?.city;
+    console.log(city2); 
+
+    // If any part is null/undefined → returns undefined (no crash)
+    let bad = null;
+    console.log(bad?.profile?.city);   // undefined (safe)
+
+</script>
+</html>
