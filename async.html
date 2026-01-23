@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous program</title>
+</head>
+<body>
+    
+
+    <script>
+        // Asynchronous Javascript
+
+        // Javascript Program is single threaded
+
+
+        const fetchPromise = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json", 
+        );
+
+        fetchPromise.then((response) => response.json())
+        .then((data) => {
+            console.log(data[0].name);
+        });
+
+
+        async function getUsers() {
+            try {
+                const response = await fetch(
+                "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+                );
+
+                if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(data);           
+                return data;
+            } catch (error) {
+                console.error("Fetch failed:", error);
+            }
+        }
+
+        getUsers();
+
+    </script>
+</body>
+</html>
