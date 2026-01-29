@@ -122,22 +122,22 @@ variableThis.greet()
 
 // Prototype
 
-const animal = {
-    eats : true,
-    walk() {
-        console.log("the animal walks around the pit");   
+const bankaccount = {
+    deposit : true,
+    depositMoney() {
+        console.log("Money deposited");   
     }
 }
 
-const rabbit = {
-    jumps : true
+const withdraw = {
+    withdraw : true
 }
 
-rabbit.__proto__ = animal
+withdraw.__proto__ = bankaccount
 
-console.log(rabbit.jumps);
-console.log(rabbit.eats);
-console.log(rabbit.walk());
+console.log(withdraw.withdraw);
+console.log(withdraw.deposit);
+console.log(withdraw.depositMoney());
 
 
 // function Animal(name){

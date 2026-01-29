@@ -37,62 +37,47 @@ student1.printInfo()
 // ES6 Classes
 
 
-class BlueprintAnimal {
-    constructor(name , breed){
-        this.name = name
-        this.breed = breed
+class Book {
+    constructor(id, title, author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
     }
 
-    walk = () => {
-        console.log(`The ${this.name} is walking`);
-        
+    getBook() {
+        console.log(`The book "${this.title}" is borrowed by user ${this.id}`);
     }
 
-    printDetailedInfo = () => {
-        console.log(`My dog name is ${this.name} and the breed is ${this.breed}`);
-    }
-}
-
-class Dog extends BlueprintAnimal{
-    constructor(name, breed, address){
-        super(name, breed)
-        this.address = address
-    }
-
-    walk = () => {
-        console.log(`The ${this.name} walking in the street ${this.address}`);
-    }
-
-    sleep = () => {
-        console.log(`The ${this.name} with the breed ${this.breed}, sleeping in the home address ${this.address}`);
-    }
-
-    printDetailedInfo = () => {
-        console.log(``);
-        
+    printDetailedInfo() {
+        console.log(`The Book Name is "${this.title}" and the book was written by ${this.author}`);
     }
 }
 
-class Cat extends BlueprintAnimal{
-    constructor(name, breed){
-        super(name, breed)
+class Librarian extends Book {
+    constructor(id, title, author, genre) {
+        super(id, title, author);
+        this.genre = genre;
     }
 
-    walk = () => {
-        console.log(`The logging of ${this.breed} and the ${this.name}`);
-        
+    provideBook() {
+        console.log(`The book is given to user ${this.id}`);
+    }
+
+    printDetailedInfo() {
+        super.printDetailedInfo();
+        console.log(`Genre: ${this.genre}`);
     }
 }
 
-const dog1 = new Dog("henry", "kirmada", "Jana Nayagan")
+const book1 = new Book(12, "Harry Potter", "J.K. Rowling");
 
-const cat1 = new Cat("Meow", "Persian cat")
-cat1.walk()
+const book2 = new Librarian(23, "A Song of Ice and Fire", "George R.R. Martin", "Fantasy");
 
-console.log(dog1.printDetailedInfo());
-console.log(dog1.sleep());
+book1.printDetailedInfo();
+console.log("");
 
+book2.printDetailedInfo();
+console.log("");
 
-
-
-
+book1.getBook();
+book2.provideBook();

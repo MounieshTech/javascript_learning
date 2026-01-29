@@ -42,3 +42,17 @@ console.log(phone.price); // getter
 
 phone.price = 18000; // calls setter
 // phone.price = -500;
+
+const arr = [1,2,3,4,5]
+const copy = [...arr]
+copy.push(90)
+
+console.log(copy); // [1,2,3,4,5,90]
+console.log(arr); // [1,2,3,4,5]
+
+
+const val = arr;
+val.push(78)
+
+console.log(val); // [1,2,3,4,5,78]
+console.log(arr); // [1,2,3,4,5,78]
