@@ -123,8 +123,10 @@ console.log(flat2);
 
 
 
+const tier3 = [3,5,6,63,3,2,5]
+const flat3 = tier3.flatMap((x) => [x])
 
-
+console.log(flat3)
 
 
 
