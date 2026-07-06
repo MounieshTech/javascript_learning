@@ -128,6 +128,8 @@ const flat3 = tier3.flatMap((x) => [x])
 
 console.log(flat3)
 
+console.log("Submodule hell")
+
 
 
 
